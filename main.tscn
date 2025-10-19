@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgpwekqlckrvw"]
+
+[ext_resource type="PackedScene" uid="uid://ca2dy1xcjnc1x" path="res://UI/top_bar.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cpddwxbca8rb" path="res://UI/HeroTab/heroes.tscn" id="2_0xm2m"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" parent="Menu" instance=ExtResource("1_ig7tw")]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="Menu"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Heroes" parent="Menu/TabContainer" instance=ExtResource("2_0xm2m")]
+layout_mode = 2

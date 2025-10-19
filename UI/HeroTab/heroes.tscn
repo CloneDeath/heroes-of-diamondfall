@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpddwxbca8rb"]
+
+[ext_resource type="Script" uid="uid://wmlvuiwub16q" path="res://UI/HeroTab/heroes.gd" id="1_vgrpg"]
+[ext_resource type="PackedScene" uid="uid://no8xk87p3y2c" path="res://UI/HeroTab/hero_details.tscn" id="2_t7rvt"]
+[ext_resource type="PackedScene" uid="uid://dh872di7q03ob" path="res://UI/HeroTab/hero_list.tscn" id="2_yl5t1"]
+
+[node name="HeroManagement" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vgrpg")
+metadata/_tab_index = 0
+
+[node name="HeroList" parent="." instance=ExtResource("2_yl5t1")]
+layout_mode = 2
+
+[node name="Details" parent="." instance=ExtResource("2_t7rvt")]
+layout_mode = 2
+
+[connection signal="item_selected" from="HeroList" to="." method="_on_hero_list_item_selected"]
