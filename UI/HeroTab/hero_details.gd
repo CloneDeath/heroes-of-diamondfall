@@ -4,8 +4,10 @@ extends VBoxContainer
 
 func _process(_delta: float) -> void:
 	if (!hero):
+		visible = false;
 		return;
-	$Name.text = hero.hero_name;
+	visible = true;
+	$Name.text = hero.unit_name;
 	$Gender.text = _get_gender_text();
 	$Health.text = "❤️ " + str(hero.max_hp);
 	$Strength.text = "💪 " + str(hero.strength);

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgpwekqlckrvw"]
+[gd_scene load_steps=4 format=3 uid="uid://cgpwekqlckrvw"]
 
 [ext_resource type="PackedScene" uid="uid://ca2dy1xcjnc1x" path="res://UI/top_bar.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://cpddwxbca8rb" path="res://UI/HeroTab/heroes.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://d3x7ncygyt4w0" path="res://UI/DungeonsTab/dungeons.tscn" id="3_h2yge"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -28,4 +29,8 @@ size_flags_vertical = 3
 current_tab = 0
 
 [node name="Heroes" parent="Menu/TabContainer" instance=ExtResource("2_0xm2m")]
+layout_mode = 2
+
+[node name="Dungeons" parent="Menu/TabContainer" instance=ExtResource("3_h2yge")]
+visible = false
 layout_mode = 2

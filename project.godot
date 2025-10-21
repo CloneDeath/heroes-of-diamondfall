@@ -10,15 +10,17 @@ config_version=5
 
 [application]
 
-config/name="HeroesOfDiamondfall"
+config/name="Heroes Of Diamondfall"
 run/main_scene="uid://cgpwekqlckrvw"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
+Id="*res://id_generator.gd"
 Resources="*res://Resources/resources.gd"
 Heroes="*res://Heroes/heroes.gd"
+Dungeons="*res://Dungeons/dungeons.gd"
 
 [rendering]
 

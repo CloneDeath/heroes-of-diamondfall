@@ -8,4 +8,4 @@ func _process(_delta: float) -> void:
 		remove_item(-1);
 	for i in heroes.size():
 		var hero = heroes[i];
-		set_item_text(i, hero.hero_name);
+		set_item_text(i, hero.unit_name);
