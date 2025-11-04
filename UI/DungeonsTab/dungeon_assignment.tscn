@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl77yur6n4s6n"]
+
+[ext_resource type="Script" uid="uid://p0kyuh5bkq4y" path="res://UI/DungeonsTab/dungeon_assignment.gd" id="1_6mhs7"]
+[ext_resource type="PackedScene" uid="uid://dh872di7q03ob" path="res://UI/HeroTab/hero_list.tscn" id="1_dyt5r"]
+
+[node name="Assignment" type="HBoxContainer"]
+script = ExtResource("1_6mhs7")
+
+[node name="Assigned" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Assigned" type="Label" parent="Assigned"]
+layout_mode = 2
+text = "Assigned:"
+
+[node name="AssignedHeroes" parent="Assigned" instance=ExtResource("1_dyt5r")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Assign" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "<<"
+
+[node name="Unassign" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ">>"
+
+[node name="Unassigned" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Unassigned" type="Label" parent="Unassigned"]
+layout_mode = 2
+text = "Unassigned:"
+
+[node name="UnassignedHeroes" parent="Unassigned" instance=ExtResource("1_dyt5r")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/Assign" to="." method="_on_assign_pressed"]
+[connection signal="pressed" from="VBoxContainer/Unassign" to="." method="_on_unassign_pressed"]

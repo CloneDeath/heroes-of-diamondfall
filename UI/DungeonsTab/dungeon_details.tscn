@@ -1,12 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvt2b4gbfappw"]
+[gd_scene load_steps=3 format=3 uid="uid://cvt2b4gbfappw"]
 
 [ext_resource type="Script" uid="uid://dd1w7fym4jxy6" path="res://UI/DungeonsTab/dungeon_details.gd" id="1_3oue7"]
+[ext_resource type="PackedScene" uid="uid://cl77yur6n4s6n" path="res://UI/DungeonsTab/dungeon_assignment.tscn" id="2_7lr4n"]
 
 [node name="DungeonDetails" type="VBoxContainer"]
 script = ExtResource("1_3oue7")
 
 [node name="Name" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Rooms" type="Label" parent="."]
+[node name="Rooms" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Rooms:"
+
+[node name="RoomCount" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="Assignment" parent="." instance=ExtResource("2_7lr4n")]
 layout_mode = 2
