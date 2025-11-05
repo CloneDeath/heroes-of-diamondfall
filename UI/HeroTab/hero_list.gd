@@ -1,6 +1,7 @@
 extends ItemList
 
 var filter: Callable;
+@export var mark_assigned: bool = false;
 
 func _get_filtered_heroes() -> Array[Hero]:
 	var heroes = Heroes.heroes;
@@ -16,7 +17,13 @@ func _process(_delta: float) -> void:
 		remove_item(0);
 	for i in heroes.size():
 		var hero = heroes[i];
-		set_item_text(i, hero.unit_name);
+		set_item_text(i, _get_hero_text(hero));
+
+func _get_hero_text(hero: Hero) -> String:
+	var result = hero.unit_name;
+	if (mark_assigned && HeroAssignment.is_assigned(hero)):
+		result = "🏯" + result;
+	return result;
 
 func get_selected_hero() -> Hero:
 	var indexes = get_selected_items();

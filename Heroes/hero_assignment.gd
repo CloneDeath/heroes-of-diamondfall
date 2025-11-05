@@ -11,6 +11,9 @@ func unassign(hero: Hero) -> void:
 func clear() -> void:
 	assignments.clear();
 
+func is_assigned(hero: Hero) -> bool:
+	return assignments.has(hero.id);
+
 func get_dungeon(hero: Hero) -> Dungeon:
 	if (!assignments.has(hero.id)):
 		return null;

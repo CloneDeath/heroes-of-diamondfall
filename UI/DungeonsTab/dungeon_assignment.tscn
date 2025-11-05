@@ -44,6 +44,7 @@ text = "Unassigned:"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
+mark_assigned = true
 
 [connection signal="pressed" from="VBoxContainer/Assign" to="." method="_on_assign_pressed"]
 [connection signal="pressed" from="VBoxContainer/Unassign" to="." method="_on_unassign_pressed"]
