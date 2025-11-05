@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca4c8bo57qb7w"]
+
+[ext_resource type="Script" uid="uid://wek6t1ika6yt" path="res://Adventure/adventure.gd" id="1_52p8s"]
+
+[node name="Adventure" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_52p8s")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 51.0
+offset_right = 230.0
+offset_bottom = 74.0
+text = "Heroes go on adventure"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3263889
+anchor_right = 0.6736111
+anchor_bottom = 0.041666668
+offset_left = 100.0
+offset_right = -100.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+max_value = 1.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
