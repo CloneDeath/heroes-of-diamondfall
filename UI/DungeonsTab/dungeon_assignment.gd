@@ -6,6 +6,10 @@ func _ready() -> void:
 	%AssignedHeroes.filter = _assigned_dungeon;
 	%UnassignedHeroes.filter = _not_assigned_dungeon;
 
+func _process(_delta: float) -> void:
+	%Unassign.disabled = !%AssignedHeroes.has_selection();
+	%Assign.disabled = !%UnassignedHeroes.has_selection();
+
 func _assigned_dungeon(hero: Hero) -> bool:
 	if (!dungeon): return false;
 	var assigned = HeroAssignment.get_dungeon(hero);

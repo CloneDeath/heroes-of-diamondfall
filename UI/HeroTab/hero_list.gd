@@ -31,3 +31,7 @@ func get_selected_hero() -> Hero:
 	var index = indexes[0];
 	var heroes = _get_filtered_heroes();
 	return heroes[index];
+
+func has_selection() -> bool:
+	var indexes = get_selected_items();
+	return indexes.size() > 0;
