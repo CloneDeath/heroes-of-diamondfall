@@ -23,6 +23,7 @@ func get_dungeon(hero: Hero) -> Dungeon:
 func get_heroes(dungeon: Dungeon) -> Array[Hero]:
 	var heroes: Array[Hero] = [];
 	for hero in Heroes.heroes:
+		if (!assignments.has(hero.id)): continue;
 		var id = assignments[hero.id];
 		if (id == dungeon.id):
 			heroes.push_back(hero);
