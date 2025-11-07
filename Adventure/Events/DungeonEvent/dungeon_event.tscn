@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ctlalyvhrb2kl"]
 
-[ext_resource type="Script" uid="uid://b7p5iwa8e40j5" path="res://Adventure/Events/dungeon_event.gd" id="1_xadhm"]
+[ext_resource type="Script" uid="uid://b7p5iwa8e40j5" path="res://Adventure/Events/DungeonEvent/dungeon_event.gd" id="1_xadhm"]
 
 [node name="DungeonEvent" type="Control"]
 layout_mode = 3
@@ -32,3 +32,17 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 max_value = 1.0
 show_percentage = false
+
+[node name="Heroes" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 132.0
+offset_right = 387.0
+offset_bottom = 522.0
+
+[node name="Enemies" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 751.0
+offset_top = 132.0
+offset_right = 949.0
+offset_bottom = 524.0

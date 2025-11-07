@@ -1,6 +1,6 @@
 extends Control
 
-var dungeon_event = preload("res://Adventure/Events/dungeon_event.tscn");
+var dungeon_event = preload("res://Adventure/Events/DungeonEvent/dungeon_event.tscn");
 
 func _ready() -> void:
 	_enqueue_dungeons();
