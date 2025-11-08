@@ -5,4 +5,6 @@ var heroes: Array[Hero] = [];
 func _init() -> void:
 	randomize();
 	for i in range(5):
-		heroes.push_back(Hero.new());
+		var hero = Hero.new();
+		hero.strength = randi_range(1, 3);
+		heroes.push_back(hero);

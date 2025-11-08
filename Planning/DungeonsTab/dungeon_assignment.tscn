@@ -1,10 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl77yur6n4s6n"]
+[gd_scene load_steps=3 format=3 uid="uid://bib7w7s82m886"]
 
-[ext_resource type="Script" uid="uid://p0kyuh5bkq4y" path="res://Planning/DungeonsTab/dungeon_assignment.gd" id="1_6mhs7"]
 [ext_resource type="PackedScene" uid="uid://dh872di7q03ob" path="res://Planning/HeroTab/hero_list.tscn" id="1_dyt5r"]
 
+[sub_resource type="GDScript" id="GDScript_4k1bu"]
+script/source = "extends HBoxContainer
+
+@export var dungeon: Dungeon;
+
+func _ready() -> void:
+	%AssignedHeroes.filter = _assigned_dungeon;
+	%UnassignedHeroes.filter = _not_assigned_dungeon;
+
+func _process(_delta: float) -> void:
+	%Unassign.disabled = !%AssignedHeroes.has_selection();
+	%Assign.disabled = !%UnassignedHeroes.has_selection();
+
+func _assigned_dungeon(hero: Hero) -> bool:
+	if (!dungeon): return false;
+	var assigned = HeroAssignment.get_dungeon(hero);
+	if (!assigned):
+		return false;
+	return assigned.id == dungeon.id;
+
+func _not_assigned_dungeon(hero: Hero) -> bool:
+	return !_assigned_dungeon(hero);
+
+func _on_assign_pressed() -> void:
+	var hero = %UnassignedHeroes.get_selected_hero();
+	HeroAssignment.assign(hero, dungeon);
+
+func _on_unassign_pressed() -> void:
+	var hero = %AssignedHeroes.get_selected_hero();
+	HeroAssignment.unassign(hero);
+"
+
 [node name="Assignment" type="HBoxContainer"]
-script = ExtResource("1_6mhs7")
+script = SubResource("GDScript_4k1bu")
 
 [node name="Assigned" type="VBoxContainer" parent="."]
 layout_mode = 2

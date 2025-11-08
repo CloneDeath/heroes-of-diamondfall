@@ -24,6 +24,7 @@ func _setup() -> void:
 	%HealthBar.max_value = unit.max_hp;
 	%HealthBar.value = unit.hp;
 	%HealthText.text = _format_hp(unit.hp, unit.max_hp);
+	%BattleSprite.texture = unit.battle_texture;
 
 func _format_hp(value: int, max_value:int) -> String:
 	return "%d/%d" % [value, max_value];

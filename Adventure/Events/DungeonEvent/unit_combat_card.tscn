@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://clbrguvaac4js"]
+[gd_scene load_steps=3 format=3 uid="uid://clbrguvaac4js"]
 
 [ext_resource type="Script" uid="uid://fphi7nbeng5y" path="res://Adventure/Events/DungeonEvent/unit_combat_card.gd" id="1_6c3o4"]
+[ext_resource type="Texture2D" uid="uid://k4ebv5u8vxas" path="res://Heroes/hero.png" id="2_73nae"]
 
 [node name="UnitCombatSummary" type="VBoxContainer"]
 anchors_preset = 15
@@ -45,3 +46,11 @@ grow_vertical = 2
 text = "1/2"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BattleSprite" type="TextureRect" parent="."]
+unique_name_in_owner = true
+texture_filter = 3
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+texture = ExtResource("2_73nae")
+stretch_mode = 5

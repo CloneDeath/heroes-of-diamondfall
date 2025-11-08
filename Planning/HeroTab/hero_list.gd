@@ -23,6 +23,7 @@ func _get_hero_text(hero: Hero) -> String:
 	var result = hero.unit_name;
 	if (mark_assigned && HeroAssignment.is_assigned(hero)):
 		result = "🏯" + result;
+	result += " " + hero.grade.display;
 	return result;
 
 func get_selected_hero() -> Hero:

@@ -11,6 +11,8 @@ func _process(_delta: float) -> void:
 	$Gender.text = _get_gender_text();
 	$Health.text = "❤️ " + str(hero.max_hp);
 	$Strength.text = "💪 " + str(hero.strength);
+	$Grade.text = "Grade " + hero.grade.display;
+	$Preview.texture = hero.battle_texture;
 
 func _get_gender_text():
 	if (hero.gender == Hero.Gender.male):
