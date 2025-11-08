@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhifegm4t0xv2"]
 
-[ext_resource type="Script" uid="uid://b0pongjnyl8tu" path="res://UI/Execute/execute.gd" id="1_m6w8y"]
+[ext_resource type="Script" uid="uid://b0pongjnyl8tu" path="res://Planning/Execute/execute.gd" id="1_m6w8y"]
 
 [node name="Execute" type="CenterContainer"]
 anchors_preset = 15

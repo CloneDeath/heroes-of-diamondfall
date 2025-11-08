@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cl77yur6n4s6n"]
 
-[ext_resource type="Script" uid="uid://p0kyuh5bkq4y" path="res://UI/DungeonsTab/dungeon_assignment.gd" id="1_6mhs7"]
-[ext_resource type="PackedScene" uid="uid://dh872di7q03ob" path="res://UI/HeroTab/hero_list.tscn" id="1_dyt5r"]
+[ext_resource type="Script" uid="uid://p0kyuh5bkq4y" path="res://Planning/DungeonsTab/dungeon_assignment.gd" id="1_6mhs7"]
+[ext_resource type="PackedScene" uid="uid://dh872di7q03ob" path="res://Planning/HeroTab/hero_list.tscn" id="1_dyt5r"]
 
 [node name="Assignment" type="HBoxContainer"]
 script = ExtResource("1_6mhs7")

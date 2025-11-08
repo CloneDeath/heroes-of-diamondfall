@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3x7ncygyt4w0"]
 
-[ext_resource type="Script" uid="uid://bwebg4ldgki2i" path="res://UI/DungeonsTab/dungeon_list.gd" id="1_au47b"]
-[ext_resource type="Script" uid="uid://yn24euncw8gv" path="res://UI/DungeonsTab/dungeons.gd" id="1_kvixb"]
-[ext_resource type="PackedScene" uid="uid://cvt2b4gbfappw" path="res://UI/DungeonsTab/dungeon_details.tscn" id="2_wy66s"]
+[ext_resource type="Script" uid="uid://bwebg4ldgki2i" path="res://Planning/DungeonsTab/dungeon_list.gd" id="1_au47b"]
+[ext_resource type="Script" uid="uid://yn24euncw8gv" path="res://Planning/DungeonsTab/dungeons.gd" id="1_kvixb"]
+[ext_resource type="PackedScene" uid="uid://cvt2b4gbfappw" path="res://Planning/DungeonsTab/dungeon_details.tscn" id="2_wy66s"]
 
 [node name="Dungeons" type="HBoxContainer"]
 anchors_preset = 15

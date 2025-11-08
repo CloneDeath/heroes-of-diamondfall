@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://no8xk87p3y2c"]
 
-[ext_resource type="Script" uid="uid://camogdjkppra6" path="res://UI/HeroTab/hero_details.gd" id="1_axoyl"]
+[ext_resource type="Script" uid="uid://camogdjkppra6" path="res://Planning/HeroTab/hero_details.gd" id="1_axoyl"]
 
 [node name="HeroDetails" type="VBoxContainer"]
 anchors_preset = 15

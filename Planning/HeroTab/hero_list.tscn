@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dh872di7q03ob"]
 
-[ext_resource type="Script" uid="uid://c1i8iq3eqo0ft" path="res://UI/HeroTab/hero_list.gd" id="1_t4hxi"]
+[ext_resource type="Script" uid="uid://c1i8iq3eqo0ft" path="res://Planning/HeroTab/hero_list.gd" id="1_t4hxi"]
 
 [node name="HeroList" type="ItemList"]
 custom_minimum_size = Vector2(200, 0)
