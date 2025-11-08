@@ -2,8 +2,9 @@ extends Event
 class_name DungeonEvent
 
 var _dungeon: Dungeon;
-var _heroes: Array[Hero];
+var _units: Array[CombatUnit];
 var _room_number: int = 0;
+var _unit_cards: Dictionary[CombatUnit, UnitCombatCard];
 
 var room: Room:
 	get: return _dungeon.rooms[_room_number];
@@ -17,11 +18,14 @@ func init(dungeon: Dungeon) -> void:
 	_dungeon = dungeon;
 	_room_number = 0;
 	$DungeonName.text = dungeon.dungeon_name;
-	_heroes = HeroAssignment.get_heroes(dungeon);
-	for hero in _heroes:
-		$Heroes.add_unit(hero);
-	for monster in room.monsters:
-		$Enemies.add_unit(monster);
+	_units = _get_combat_units();
+	for unit in _units:
+		var card: UnitCombatCard;
+		if (unit.team == CombatUnit.Team.hero):
+			card = $Heroes.add_unit(unit);
+		else:
+			card = $Enemies.add_unit(unit);
+		_unit_cards[unit] = card;
 
 func _process(delta: float) -> void:
 	$RoomNumber.text = "Room #" + str(_room_number+1);
@@ -38,28 +42,28 @@ func execute() -> void:
 	process = true;
 	await _progress_complete;
 
-	var units = _get_combat_units();
-	while _combat_should_continue(units):
-		for unit: CombatUnit in units:
+	while _combat_should_continue():
+		for unit: CombatUnit in _units:
 			if (unit.is_dead()): continue;
-			var target = unit.select_target(units);
+			var target = unit.select_target(_units);
 			unit.attack(target);
+			await _unit_cards.get(unit).attack();
 			await _progress_complete;
-			if (!_combat_should_continue(units)):
+			if (!_combat_should_continue()):
 				break;
 
-func _combat_should_continue(units: Array[CombatUnit]) -> bool:
-	var hero = units.filter(func(unit:CombatUnit):
+func _combat_should_continue() -> bool:
+	var hero = _units.filter(func(unit:CombatUnit):
 		return unit.team == CombatUnit.Team.hero && unit.is_alive();
 	);
-	var monster = units.filter(func(unit:CombatUnit):
+	var monster = _units.filter(func(unit:CombatUnit):
 		return unit.team == CombatUnit.Team.monster && unit.is_alive();
 	);
 	return hero && monster;
 
 func _get_combat_units() -> Array[CombatUnit]:
 	var units: Array[CombatUnit] = [];
-	for hero in _heroes:
+	for hero in HeroAssignment.get_heroes(_dungeon):
 		units.push_back(CombatUnit.new(hero, CombatUnit.Team.hero));
 	for monster in room.monsters:
 		units.push_back(CombatUnit.new(monster, CombatUnit.Team.monster));

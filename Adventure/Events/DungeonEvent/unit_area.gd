@@ -11,7 +11,7 @@ func _init() -> void:
 	for child in get_children():
 		child.queue_free();
 
-func add_unit(unit: Unit) -> void:
+func add_unit(unit: CombatUnit) -> UnitCombatCard:
 	var card: UnitCombatCard = unit_combat_card.instantiate();
 	card.unit = unit;
 	if (layout == HorizontalAlignment.HORIZONTAL_ALIGNMENT_LEFT):
@@ -22,3 +22,4 @@ func add_unit(unit: Unit) -> void:
 	card.position.y = _unit_height * (_unit_count % 3);
 	add_child(card);
 	_unit_count += 1;
+	return card;

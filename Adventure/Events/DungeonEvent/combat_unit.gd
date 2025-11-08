@@ -12,6 +12,12 @@ var initiative = 0;
 var hp: int:
 	get: return _unit.hp;
 	set(value): _unit.hp = value;
+var max_hp: int:
+	get: return _unit.max_hp;
+var unit_name: String:
+	get: return _unit.unit_name;
+var battle_texture: Texture2D:
+	get: return _unit.battle_texture;
 
 var team: Team:
 	get: return _team;

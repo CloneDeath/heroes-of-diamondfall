@@ -3,8 +3,8 @@ class_name UnitCombatCard
 
 @export var hp_speed = 10;
 
-var _unit: Unit;
-var unit: Unit:
+var _unit: CombatUnit;
+var unit: CombatUnit:
 	get:
 		return _unit;
 	set(value):
@@ -31,3 +31,12 @@ func _setup() -> void:
 
 func _format_hp(value: int, max_value:int) -> String:
 	return "%d/%d" % [value, max_value];
+
+func attack() -> void:
+	var direction: Vector2 = Vector2(20, 0);
+	if (unit.team == CombatUnit.Team.monster):
+		direction *= -1;
+	var t := create_tween();
+	t.tween_property(self, "position", position + direction, 0.08);
+	t.tween_property(self, "position", position, 0.16);
+	await t.finished;
