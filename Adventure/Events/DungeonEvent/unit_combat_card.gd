@@ -1,4 +1,5 @@
 extends Control
+class_name UnitCombatCard
 
 @export var hp_speed = 10;
 
@@ -17,6 +18,8 @@ func _process(delta: float) -> void:
 	visible = true;
 	%HealthBar.value = move_toward(%HealthBar.value, unit.hp, delta * hp_speed);
 	%HealthText.text = _format_hp(%HealthBar.value, unit.max_hp);
+	if (_unit.hp <= 0):
+		modulate = Color.WHITE.lerp(Color.DARK_GRAY, 0.5);
 
 func _setup() -> void:
 	if (!unit): return;

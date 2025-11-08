@@ -1,8 +1,6 @@
 extends Event
 class_name DungeonEvent
 
-var unit_combat_card = preload("res://Adventure/Events/DungeonEvent/unit_combat_card.tscn");
-
 var _dungeon: Dungeon;
 var _heroes: Array[Hero];
 var _room_number: int = 0;
@@ -21,13 +19,9 @@ func init(dungeon: Dungeon) -> void:
 	$DungeonName.text = dungeon.dungeon_name;
 	_heroes = HeroAssignment.get_heroes(dungeon);
 	for hero in _heroes:
-		var hero_data = unit_combat_card.instantiate();
-		hero_data.unit = hero;
-		$Heroes.add_child(hero_data);
+		$Heroes.add_unit(hero);
 	for monster in room.monsters:
-		var monster_data = unit_combat_card.instantiate();
-		monster_data.unit = monster;
-		$Enemies.add_child(monster_data);
+		$Enemies.add_unit(monster);
 
 func _process(delta: float) -> void:
 	$RoomNumber.text = "Room #" + str(_room_number+1);

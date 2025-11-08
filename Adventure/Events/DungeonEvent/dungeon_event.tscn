@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctlalyvhrb2kl"]
+[gd_scene load_steps=3 format=3 uid="uid://ctlalyvhrb2kl"]
 
 [ext_resource type="Script" uid="uid://b7p5iwa8e40j5" path="res://Adventure/Events/DungeonEvent/dungeon_event.gd" id="1_xadhm"]
+[ext_resource type="PackedScene" uid="uid://bp8tx5nli7mw6" path="res://Adventure/Events/DungeonEvent/unit_area.tscn" id="2_nonpa"]
 
 [node name="DungeonEvent" type="Control"]
 layout_mode = 3
@@ -41,16 +42,27 @@ size_flags_horizontal = 4
 max_value = 1.0
 show_percentage = false
 
-[node name="Heroes" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 189.0
-offset_top = 132.0
-offset_right = 387.0
-offset_bottom = 522.0
+[node name="Heroes" parent="." instance=ExtResource("2_nonpa")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.19753087
+anchor_right = 0.4565972
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_vertical = 2
+layout = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Enemies" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 751.0
-offset_top = 132.0
-offset_right = 949.0
-offset_bottom = 524.0
+[node name="Enemies" parent="." instance=ExtResource("2_nonpa")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5434028
+anchor_top = 0.19753087
+anchor_right = 1.0
+anchor_bottom = 0.9876543
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true

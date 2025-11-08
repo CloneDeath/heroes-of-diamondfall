@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp8tx5nli7mw6"]
+
+[ext_resource type="PackedScene" uid="uid://clbrguvaac4js" path="res://Adventure/Events/DungeonEvent/unit_combat_card.tscn" id="1_58t6a"]
+[ext_resource type="Script" uid="uid://cjyj4f8s7h7kh" path="res://Adventure/Events/DungeonEvent/unit_area.gd" id="1_nm36i"]
+
+[node name="UnitArea" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 463.0
+offset_bottom = 467.0
+script = ExtResource("1_nm36i")
+
+[node name="UnitCombatSummary" parent="." instance=ExtResource("1_58t6a")]
+layout_mode = 0
