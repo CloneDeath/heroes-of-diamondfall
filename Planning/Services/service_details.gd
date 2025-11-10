@@ -12,6 +12,8 @@ func _process(_delta: float) -> void:
 		return;
 	visible = true;
 	%Name.text = service.service_name;
+	%Description.text = service.description;
+	%Texture.texture = service.texture;
 	%Unlock.text = "Unlock (%s gold)" % service.cost;
 	%Unlock.visible = !service.unlocked;
 	%Unlock.disabled = service.unlocked || Resources.gold < service.cost;
