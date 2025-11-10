@@ -10,6 +10,5 @@ var max_hp: int = 10;
 
 var strength: int = 1;
 
-
 func _init() -> void:
 	id = Id.next();

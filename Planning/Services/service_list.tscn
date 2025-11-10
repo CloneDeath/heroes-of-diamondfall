@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdb3g6jxh1gie"]
+
+[ext_resource type="Script" uid="uid://bedpbgww3bbmq" path="res://Planning/Services/service_list.gd" id="1_2cm5f"]
+
+[node name="ServiceList" type="ItemList"]
+script = ExtResource("1_2cm5f")

@@ -6,7 +6,6 @@ var dungeon: Dungeon:
 		return _dungeon;
 	set(value):
 		_dungeon = value;
-		$Assignment.dungeon = dungeon;
 
 func _process(_delta: float) -> void:
 	if (!dungeon):

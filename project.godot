@@ -22,6 +22,7 @@ Resources="*res://Resources/resources.gd"
 Heroes="*res://Heroes/heroes.gd"
 Dungeons="*res://Dungeons/dungeons.gd"
 HeroAssignment="*res://Heroes/hero_assignment.gd"
+Services="*res://Services/services.gd"
 
 [rendering]
 

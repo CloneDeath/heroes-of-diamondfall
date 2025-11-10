@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c22dkj3y28l2u"]
+
+[ext_resource type="PackedScene" uid="uid://bdb3g6jxh1gie" path="res://Planning/Services/service_list.tscn" id="1_lbuqf"]
+[ext_resource type="Script" uid="uid://df4vxdk5d7o3q" path="res://Planning/Services/services_tab.gd" id="1_yn6do"]
+[ext_resource type="PackedScene" uid="uid://lp7uts03fjld" path="res://Planning/Services/service_details.tscn" id="2_ugtgi"]
+
+[node name="ServicesTab" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yn6do")
+
+[node name="ServiceList" parent="." instance=ExtResource("1_lbuqf")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="ServiceDetails" parent="." instance=ExtResource("2_ugtgi")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="item_selected" from="ServiceList" to="." method="_on_service_list_item_selected"]
