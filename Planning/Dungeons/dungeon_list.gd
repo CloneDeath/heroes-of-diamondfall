@@ -8,4 +8,9 @@ func _process(_delta: float) -> void:
 		remove_item(-1);
 	for i in dungeons.size():
 		var dungeon = dungeons[i];
-		set_item_text(i, dungeon.dungeon_name);
+		set_item_text(i, _get_dungeon_display_name(dungeon));
+
+func _get_dungeon_display_name(dungeon: Dungeon) -> String:
+	var result = dungeon.dungeon_name;
+	if (!dungeon.has_permit): result += " 🔒"
+	return result;

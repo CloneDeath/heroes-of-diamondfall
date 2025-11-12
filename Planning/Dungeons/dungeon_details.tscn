@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvt2b4gbfappw"]
 
-[ext_resource type="Script" uid="uid://dd1w7fym4jxy6" path="res://Planning/DungeonsTab/dungeon_details.gd" id="1_3oue7"]
+[ext_resource type="Script" uid="uid://dd1w7fym4jxy6" path="res://Planning/Dungeons/dungeon_details.gd" id="1_3oue7"]
 
 [node name="DungeonDetails" type="VBoxContainer"]
 script = ExtResource("1_3oue7")
@@ -21,3 +21,15 @@ text = "Rooms:"
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
+
+[node name="Cost" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10 Gold"
+
+[node name="Purchase" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Purchase Guild Permit"
+
+[connection signal="pressed" from="Purchase" to="." method="_on_purchase_pressed"]

@@ -17,6 +17,11 @@ func get_dungeon(id: int) -> Dungeon:
 	var index = dungeons.find_custom(get_by_id);
 	return dungeons[index];
 
-func random() -> Dungeon:
-	var index = randi_range(0, dungeons.size() - 1);
-	return dungeons[index];
+func has_permit() -> bool:
+	var purchased = dungeons.filter(func (dungeon: Dungeon): return dungeon.has_permit);
+	return purchased.size() > 0;
+
+func random_purchased() -> Dungeon:
+	var purchased = dungeons.filter(func (dungeon: Dungeon): return dungeon.has_permit);
+	var index = randi_range(0, purchased.size() - 1);
+	return purchased[index];
