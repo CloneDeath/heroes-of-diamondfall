@@ -1,6 +1,7 @@
 extends VBoxContainer
 
 @export var applicant: Applicant;
+signal applicant_recruited(applicant: Applicant);
 
 func _process(_delta: float) -> void:
 	if (!applicant):
@@ -12,9 +13,14 @@ func _process(_delta: float) -> void:
 	$Health.text = "❤️ " + str(applicant.max_hp);
 	$Strength.text = "💪 " + str(applicant.strength);
 	$Preview.texture = applicant.battle_texture;
+	$Cost.text = str(applicant.cost) + " Gold";
+	$Recruit.disabled = applicant.cost > Resources.gold;
 
 func _get_gender_text():
 	if (applicant.gender == Hero.Gender.male):
 		return "♂️ Male";
 	else:
 		return "♀️ Female";
+
+func _on_recruit_pressed() -> void:
+	applicant_recruited.emit(applicant);

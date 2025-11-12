@@ -26,8 +26,18 @@ text = "Health"
 layout_mode = 2
 text = "Strength"
 
+[node name="Cost" type="Label" parent="."]
+layout_mode = 2
+text = "10 Gold"
+
+[node name="Recruit" type="Button" parent="."]
+layout_mode = 2
+text = "Recruit"
+
 [node name="Preview" type="Sprite2D" parent="."]
 texture_filter = 3
 position = Vector2(281, 249)
 scale = Vector2(10, 10)
 texture = ExtResource("2_ejyu7")
+
+[connection signal="pressed" from="Recruit" to="." method="_on_recruit_pressed"]
