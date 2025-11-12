@@ -1,14 +1,8 @@
 extends Node
 
 var dungeons: Array[Dungeon] = [
-	Dungeon.new("Forest", [
-		Room.new([Wolf.new()]),
-		Room.new([Bear.new()])
-	]),
-	Dungeon.new("Mountain", [
-		Room.new([Goblin.new()]),
-		Room.new([Orc.new(), Goblin.new()])
-	])
+	Forest.new(),
+	Mountain.new()
 ];
 
 func get_dungeon(id: int) -> Dungeon:

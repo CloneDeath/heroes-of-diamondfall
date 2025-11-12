@@ -10,7 +10,7 @@ func _process(_delta: float) -> void:
 		return;
 	visible = true;
 	%Name.text = dungeon.dungeon_name;
-	%RoomCount.text = str(dungeon.rooms.size());
+	%Progress.value = dungeon.progress();
 	%Cost.text = str(dungeon.permit_cost) + " Gold";
 	%Cost.visible = !dungeon.has_permit;
 	%Purchase.disabled = dungeon.has_permit;

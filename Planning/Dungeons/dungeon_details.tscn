@@ -13,19 +13,20 @@ text = "Name"
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Rooms" type="Label" parent="HBoxContainer"]
+[node name="ProgressLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
-text = "Rooms:"
+text = "Progress: "
 
-[node name="RoomCount" type="Label" parent="HBoxContainer"]
+[node name="Progress" type="ProgressBar" parent="HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-text = "0"
+size_flags_vertical = 1
+max_value = 1.0
 
 [node name="Cost" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-text = "10 Gold"
 
 [node name="Purchase" type="Button" parent="."]
 unique_name_in_owner = true
