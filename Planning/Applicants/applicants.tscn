@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkr3gfjoxrsil"]
+
+[ext_resource type="Script" uid="uid://kxfepfttx4pt" path="res://Planning/Applicants/applicants.gd" id="1_eltdd"]
+[ext_resource type="PackedScene" uid="uid://cx4uke7qe2qpd" path="res://Planning/Applicants/applicant_list.tscn" id="2_1eou4"]
+[ext_resource type="PackedScene" uid="uid://dti4ynn8i44ic" path="res://Planning/Applicants/applicant_details.tscn" id="3_x6f6l"]
+
+[node name="Applicants" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eltdd")
+
+[node name="ApplicantList" parent="." instance=ExtResource("2_1eou4")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Details" parent="." instance=ExtResource("3_x6f6l")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="item_selected" from="ApplicantList" to="." method="_on_applicant_list_item_selected"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://dti4ynn8i44ic"]
+
+[ext_resource type="Script" uid="uid://bj5frpbpisw3w" path="res://Planning/Applicants/applicant_details.gd" id="1_mdw8f"]
+[ext_resource type="Texture2D" uid="uid://k4ebv5u8vxas" path="res://Heroes/hero.png" id="2_ejyu7"]
+
+[node name="ApplicantDetails" type="VBoxContainer"]
+script = ExtResource("1_mdw8f")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+text = "Name"
+
+[node name="Grade" type="Label" parent="."]
+layout_mode = 2
+text = "Grade: 🇪"
+
+[node name="Gender" type="Label" parent="."]
+layout_mode = 2
+text = "Gender"
+
+[node name="Health" type="Label" parent="."]
+layout_mode = 2
+text = "Health"
+
+[node name="Strength" type="Label" parent="."]
+layout_mode = 2
+text = "Strength"
+
+[node name="Preview" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(281, 249)
+scale = Vector2(10, 10)
+texture = ExtResource("2_ejyu7")

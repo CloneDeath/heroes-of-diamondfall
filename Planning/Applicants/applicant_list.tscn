@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx4uke7qe2qpd"]
+
+[ext_resource type="Script" uid="uid://mhkx41x7n13o" path="res://Planning/Applicants/applicant_list.gd" id="1_5shg2"]
+
+[node name="ApplicantList" type="ItemList"]
+offset_right = 200.0
+offset_bottom = 200.0
+item_count = 1
+item_0/text = "Wannabe Hero"
+script = ExtResource("1_5shg2")
