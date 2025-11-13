@@ -2,5 +2,7 @@ extends Monster
 class_name Orc
 
 func _init() -> void:
-	super("Orc");
+	max_hp = 30;
+	strength = 7;
 	battle_texture = preload("res://Units/Monsters/orc.png")
+	super("Orc");

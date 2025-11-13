@@ -15,6 +15,7 @@ func _process(_delta: float) -> void:
 	%Cost.visible = !dungeon.has_permit;
 	%Purchase.disabled = dungeon.has_permit;
 	%Purchase.visible = !dungeon.has_permit;
+	%ProgressBox.visible = dungeon.has_permit;
 
 func _on_purchase_pressed() -> void:
 	purchased.emit(dungeon);

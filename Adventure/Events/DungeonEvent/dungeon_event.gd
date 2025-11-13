@@ -45,6 +45,7 @@ func _load_next_room() -> void:
 	_dungeon.on_complete(_room);
 	if (_dungeon.has_monsters()):
 		_load_room_and_units();
+		await _progress_complete;
 	else:
 		_room = null;
 

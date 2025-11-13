@@ -12,7 +12,7 @@ func _init() -> void:
 
 func _get_hero() -> Hero:
 	var hero = Hero.new();
-	hero.max_hp = randi_range(8, 12);
+	hero.max_hp = randi_range(8, 15);
 	hero.hp = hero.max_hp;
-	hero.strength = randi_range(1, 3);
+	hero.strength = randi_range(1, 5);
 	return hero;
