@@ -12,7 +12,7 @@ func _init():
 func has_monsters() -> bool:
 	return wolves.has_population() && bears.has_population();
 
-func on_kill(unit: Unit):
+func _on_kill(unit: Unit):
 	if (unit is Wolf):
 		wolves.kill();
 	if (unit is Bear):

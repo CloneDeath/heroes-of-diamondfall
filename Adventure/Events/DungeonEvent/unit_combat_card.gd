@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 
 func _setup() -> void:
 	if (!unit): return;
+	unit.attacks.connect(attack);
 	%Name.text = unit.unit_name;
 	%HealthBar.max_value = unit.max_hp;
 	%HealthBar.value = unit.hp;

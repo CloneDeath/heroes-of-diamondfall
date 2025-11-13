@@ -15,9 +15,9 @@ func _init(new_name: String) -> void:
 func on_complete(room: Room) -> void:
 	var defeated = room.monsters.filter(func (other: Unit): return other.hp <= 0);
 	for unit: Unit in defeated:
-		on_kill(unit);
+		_on_kill(unit);
 
 @abstract func has_monsters() -> bool;
-@abstract func on_kill(unit: Unit) -> void;
+@abstract func _on_kill(unit: Unit) -> void;
 @abstract func progress() -> float;
 @abstract func get_room() -> Room;

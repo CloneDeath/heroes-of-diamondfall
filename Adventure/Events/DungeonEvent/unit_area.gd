@@ -1,6 +1,12 @@
 extends Control
 
 @export var layout: HorizontalAlignment = HorizontalAlignment.HORIZONTAL_ALIGNMENT_LEFT;
+var _units: Array[CombatUnit];
+var units: Array[CombatUnit]:
+	get: return _units;
+	set(value):
+		_units = value;
+		_reset_units();
 
 var unit_combat_card = preload("res://Adventure/Events/DungeonEvent/unit_combat_card.tscn");
 var _unit_width = 150 + 5;
@@ -11,7 +17,20 @@ func _init() -> void:
 	for child in get_children():
 		child.queue_free();
 
-func add_unit(unit: CombatUnit) -> UnitCombatCard:
+func _reset_units() -> void:
+	for child: Node in get_children():
+		if (child is UnitCombatCard):
+			child.queue_free();
+	_unit_count = 0;
+	for unit in _units:
+		_add_unit(unit);
+
+func _get_combat_cards() -> Array[UnitCombatCard]:
+	return get_children().filter(func (child: Node):
+		return child is UnitCombatCard;
+	);
+
+func _add_unit(unit: CombatUnit) -> void:
 	var card: UnitCombatCard = unit_combat_card.instantiate();
 	card.unit = unit;
 	if (layout == HorizontalAlignment.HORIZONTAL_ALIGNMENT_LEFT):
@@ -22,4 +41,3 @@ func add_unit(unit: CombatUnit) -> UnitCombatCard:
 	card.position.y = _unit_height * (_unit_count % 3);
 	add_child(card);
 	_unit_count += 1;
-	return card;

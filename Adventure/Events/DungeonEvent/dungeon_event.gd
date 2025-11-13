@@ -2,12 +2,8 @@ extends Event
 class_name DungeonEvent
 
 var _dungeon: Dungeon;
-var _units: Array[CombatUnit];
-var _room_number: int = 0;
-var _unit_cards: Dictionary[CombatUnit, UnitCombatCard];
-
-var room: Room:
-	get: return _dungeon.rooms[_room_number];
+var _units: CombatUnits;
+var _room: Room;
 
 var process = false;
 var progress = 0;
@@ -16,20 +12,12 @@ signal _progress_complete;
 
 func init(dungeon: Dungeon) -> void:
 	_dungeon = dungeon;
-	_room_number = 0;
 	$DungeonName.text = dungeon.dungeon_name;
-	_units = _get_combat_units();
-	for unit in _units:
-		var card: UnitCombatCard;
-		if (unit.team == CombatUnit.Team.hero):
-			card = $Heroes.add_unit(unit);
-		else:
-			card = $Enemies.add_unit(unit);
-		_unit_cards[unit] = card;
+	_units = CombatUnits.new(dungeon);
+	$Heroes.units = _units.heroes;
+	_load_room_and_units();
 
 func _process(delta: float) -> void:
-	$RoomNumber.text = "Room #" + str(_room_number+1);
-
 	if (!process): return;
 
 	progress += delta / time_per_step;
@@ -42,32 +30,34 @@ func execute() -> void:
 	process = true;
 	await _progress_complete;
 
-	while _combat_should_continue():
-		for unit: CombatUnit in _units:
+	while _room && _combat_should_continue():
+		for unit: CombatUnit in _units.all:
 			if (unit.is_dead()): continue;
-			var target = unit.select_target(_units);
+			var target = unit.select_target(_units.all);
 			unit.attack(target);
-			await _unit_cards.get(unit).attack();
 			await _progress_complete;
 			if (!_combat_should_continue()):
 				break;
+		if (_units._all_monsters_are_dead()):
+			_load_next_room();
+
+func _load_next_room() -> void:
+	_dungeon.on_complete(_room);
+	if (_dungeon.has_monsters()):
+		_load_room_and_units();
+	else:
+		_room = null;
 
 func _combat_should_continue() -> bool:
-	var hero = _units.filter(func(unit:CombatUnit):
-		return unit.team == CombatUnit.Team.hero && unit.is_alive();
-	);
-	var monster = _units.filter(func(unit:CombatUnit):
-		return unit.team == CombatUnit.Team.monster && unit.is_alive();
-	);
-	return hero && monster;
+	var living_heroes = _units.heroes.filter(func(unit:CombatUnit):
+		return unit.is_alive();
+	).size();
+	var living_monsters = _units.monsters.filter(func(unit:CombatUnit):
+		return unit.is_alive();
+	).size();
+	return living_heroes > 0 && living_monsters > 0;
 
-func _get_combat_units() -> Array[CombatUnit]:
-	var units: Array[CombatUnit] = [];
-	for hero in HeroAssignment.get_heroes(_dungeon):
-		units.push_back(CombatUnit.new(hero, CombatUnit.Team.hero));
-	for monster in room.monsters:
-		units.push_back(CombatUnit.new(monster, CombatUnit.Team.monster));
-	units.sort_custom(func (a, b):
-		return a.initiative < b.initiative;
-	);
-	return units;
+func _load_room_and_units() -> void:
+	_room = _dungeon.get_room();
+	_units.set_room(_room);
+	$Enemies.units = _units.monsters;
