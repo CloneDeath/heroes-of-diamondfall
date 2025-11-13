@@ -15,4 +15,5 @@ func _get_hero() -> Hero:
 	hero.max_hp = randi_range(8, 15);
 	hero.hp = hero.max_hp;
 	hero.strength = randi_range(1, 5);
+	hero.dexterity = randi_range(1, 5);
 	return hero;

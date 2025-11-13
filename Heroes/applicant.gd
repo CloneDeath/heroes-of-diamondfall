@@ -10,6 +10,8 @@ var max_hp: int:
 	get: return hero.max_hp;
 var strength: int:
 	get: return hero.strength;
+var dexterity: int:
+	get: return hero.dexterity;
 var battle_texture: Texture2D:
 	get: return hero.battle_texture;
 var gender: Hero.Gender:

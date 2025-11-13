@@ -11,7 +11,8 @@ func _process(_delta: float) -> void:
 	$Name.text = applicant.unit_name;
 	$Gender.text = _get_gender_text();
 	$Health.text = "❤️ " + str(applicant.max_hp);
-	$Strength.text = "💪 " + str(applicant.strength);
+	%Strength.text = "💪 " + str(applicant.strength);
+	%Dexterity.text = "🏃 " + str(applicant.dexterity);
 	$Preview.texture = applicant.battle_texture;
 	$Cost.text = str(applicant.cost) + " Gold";
 	$Recruit.disabled = applicant.cost > Resources.gold;

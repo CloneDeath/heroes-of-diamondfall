@@ -12,6 +12,7 @@ var hp: int = 10;
 var max_hp: int = 10;
 
 var strength: int = 1;
+var dexterity: int = 1;
 
 func _init() -> void:
 	id = Id.next();
@@ -24,3 +25,6 @@ func take_damage(amount: int) -> void:
 func attack(target: Unit):
 	target.take_damage(strength);
 	attacks.emit(target);
+
+func get_initiative():
+	return randi_range(0, dexterity);

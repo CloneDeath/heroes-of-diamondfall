@@ -31,7 +31,7 @@ func _init(unit: Unit, assigned_team: Team) -> void:
 	_unit.attacks.connect(func(target): attacks.emit(target));
 
 	_team = assigned_team;
-	initiative = randi_range(0, 100);
+	initiative = unit.get_initiative();
 
 func is_alive() -> bool: return _unit.hp > 0;
 func is_dead() -> bool: return !is_alive();

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cgpwekqlckrvw"]
 
 [ext_resource type="PackedScene" uid="uid://ca2dy1xcjnc1x" path="res://Planning/top_bar.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://cpddwxbca8rb" path="res://Planning/HeroTab/heroes.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cpddwxbca8rb" path="res://Planning/Heroes/heroes.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bkr3gfjoxrsil" path="res://Planning/Applicants/applicants.tscn" id="2_hygik"]
 [ext_resource type="PackedScene" uid="uid://c22dkj3y28l2u" path="res://Planning/Services/services_tab.tscn" id="3_ek4ok"]
 [ext_resource type="PackedScene" uid="uid://d3x7ncygyt4w0" path="res://Planning/Dungeons/dungeons.tscn" id="3_h2yge"]

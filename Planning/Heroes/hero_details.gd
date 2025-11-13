@@ -10,7 +10,8 @@ func _process(_delta: float) -> void:
 	$Name.text = hero.unit_name;
 	$Gender.text = _get_gender_text();
 	$Health.text = "❤️ " + str(hero.max_hp);
-	$Strength.text = "💪 " + str(hero.strength);
+	%Strength.text = "💪 " + str(hero.strength);
+	%Dexterity.text = "🏃 " + str(hero.dexterity);
 	$Grade.text = "Grade " + hero.grade.display;
 	$Preview.texture = hero.battle_texture;
 

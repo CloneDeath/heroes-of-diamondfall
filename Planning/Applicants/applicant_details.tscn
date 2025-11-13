@@ -23,8 +23,14 @@ layout_mode = 2
 text = "Health"
 
 [node name="Strength" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Strength"
+
+[node name="Dexterity" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Dexterity"
 
 [node name="Cost" type="Label" parent="."]
 layout_mode = 2

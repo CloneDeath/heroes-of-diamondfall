@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bib7w7s82m886"]
 
-[ext_resource type="PackedScene" uid="uid://dh872di7q03ob" path="res://Planning/HeroTab/hero_list.tscn" id="1_dyt5r"]
+[ext_resource type="PackedScene" uid="uid://dh872di7q03ob" path="res://Planning/Heroes/hero_list.tscn" id="1_dyt5r"]
 
 [sub_resource type="GDScript" id="GDScript_4k1bu"]
 script/source = "extends HBoxContainer

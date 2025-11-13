@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://no8xk87p3y2c"]
 
-[ext_resource type="Script" uid="uid://camogdjkppra6" path="res://Planning/HeroTab/hero_details.gd" id="1_axoyl"]
+[ext_resource type="Script" uid="uid://camogdjkppra6" path="res://Planning/Heroes/hero_details.gd" id="1_axoyl"]
 [ext_resource type="Texture2D" uid="uid://k4ebv5u8vxas" path="res://Heroes/hero.png" id="2_53v0l"]
 
 [node name="HeroDetails" type="VBoxContainer"]
@@ -29,8 +29,14 @@ layout_mode = 2
 text = "Health"
 
 [node name="Strength" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Strength"
+
+[node name="Dexterity" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Dexterity"
 
 [node name="Preview" type="Sprite2D" parent="."]
 position = Vector2(281, 249)
