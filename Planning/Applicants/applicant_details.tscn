@@ -42,7 +42,7 @@ text = "Recruit"
 
 [node name="Preview" type="Sprite2D" parent="."]
 texture_filter = 3
-position = Vector2(281, 249)
+position = Vector2(364.00003, 86)
 scale = Vector2(10, 10)
 texture = ExtResource("2_ejyu7")
 

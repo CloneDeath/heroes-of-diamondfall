@@ -16,4 +16,7 @@ func _get_hero() -> Hero:
 	hero.hp = hero.max_hp;
 	hero.strength = randi_range(1, 5);
 	hero.dexterity = randi_range(1, 5);
+
+	var sword = Sword.new();
+	hero.inventory.weapon = sword;
 	return hero;

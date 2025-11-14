@@ -14,6 +14,8 @@ var max_hp: int = 10;
 var strength: int = 1;
 var dexterity: int = 1;
 
+var inventory: Inventory = Inventory.new();
+
 func _init() -> void:
 	id = Id.next();
 	hp = max_hp;
@@ -23,7 +25,10 @@ func take_damage(amount: int) -> void:
 	attacked.emit(amount);
 
 func attack(target: Unit):
-	target.take_damage(strength);
+	var damage = strength;
+	if (inventory.weapon):
+		damage += inventory.weapon.damage;
+	target.take_damage(damage);
 	attacks.emit(target);
 
 func get_initiative():
