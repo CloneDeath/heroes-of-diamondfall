@@ -9,5 +9,7 @@ func _on_execute_pressed() -> void:
 
 func _hero_claim_dungeons() -> void:
 	for hero in Heroes.heroes:
+		if (hero.hp <= 0):
+			continue;
 		var dungeon = Dungeons.random_purchased();
 		HeroAssignment.assign(hero, dungeon);

@@ -20,6 +20,9 @@ func _init() -> void:
 	id = Id.next();
 	hp = max_hp;
 
+func heal(amount: int) -> void:
+	hp = int(move_toward(hp, max_hp, amount));
+
 func take_damage(amount: int) -> void:
 	hp = int(move_toward(hp, 0, amount));
 	attacked.emit(amount);
