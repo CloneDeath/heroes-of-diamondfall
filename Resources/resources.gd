@@ -1,3 +1,3 @@
 extends Node
 
-var gold: int = 100;
+var gold: int = 25;

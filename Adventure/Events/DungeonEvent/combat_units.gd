@@ -1,6 +1,8 @@
 extends Node
 class_name CombatUnits
 
+signal monster_death;
+
 var heroes: Array[CombatUnit] = [];
 var monsters: Array[CombatUnit] = [];
 var all: Array[CombatUnit]:
@@ -28,7 +30,12 @@ func _all_monsters_are_dead() -> bool:
 	return living_monsters == 0;
 
 func set_room(room: Room) -> void:
+	for monster: CombatUnit in monsters:
+		monster._unit.death.disconnect(_on_monster_death);
 	monsters.clear();
 	for monster in room.monsters:
 		monsters.push_back(CombatUnit.new(monster, CombatUnit.Team.monster));
-	pass;
+		monster.death.connect(_on_monster_death);
+
+func _on_monster_death(monster: Unit) -> void:
+	monster_death.emit(monster);

@@ -3,6 +3,7 @@ class_name Unit
 
 signal attacked(damage: int);
 signal attacks(target: Unit);
+signal death(unit: Unit);
 
 var id: int;
 var unit_name: String;
@@ -10,9 +11,12 @@ var battle_texture: Texture2D;
 
 var hp: int = 10;
 var max_hp: int = 10;
+var dead: bool = false;
 
 var strength: int = 1;
 var dexterity: int = 1;
+
+var gold: int = 0;
 
 var inventory: Inventory = Inventory.new();
 
@@ -22,10 +26,16 @@ func _init() -> void:
 
 func heal(amount: int) -> void:
 	hp = int(move_toward(hp, max_hp, amount));
+	if (hp > 0):
+		dead = false;
 
 func take_damage(amount: int) -> void:
-	hp = int(move_toward(hp, 0, amount));
-	attacked.emit(amount);
+	if (hp > 0):
+		hp = int(move_toward(hp, 0, amount));
+		attacked.emit(amount);
+	if (hp <= 0 && !dead):
+		dead = true;
+		death.emit(self);
 
 func attack(target: Unit):
 	var damage = strength;

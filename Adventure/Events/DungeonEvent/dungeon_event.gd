@@ -5,6 +5,7 @@ var _dungeon: Dungeon;
 var _units: CombatUnits;
 var _room: Room;
 
+var total_gold = 0;
 var process = false;
 var progress = 0;
 @export var time_per_step: float = 1;
@@ -12,14 +13,16 @@ signal _progress_complete;
 
 func init(dungeon: Dungeon) -> void:
 	_dungeon = dungeon;
-	$DungeonName.text = dungeon.dungeon_name;
+	%DungeonName.text = dungeon.dungeon_name;
 	_units = CombatUnits.new(dungeon);
+	_units.monster_death.connect(func (monster: Unit): total_gold += monster.gold);
 	$Heroes.units = _units.heroes;
 	_load_room_and_units();
 
 func _process(delta: float) -> void:
 	if (_dungeon):
 		%DungeonProgress.value = _dungeon.progress() * 100;
+		%Gold.text = str(total_gold) + " gold";
 	if (!process): return;
 
 	progress += delta / time_per_step;
@@ -42,6 +45,16 @@ func execute() -> void:
 				break;
 		if (_units._all_monsters_are_dead()):
 			_load_next_room();
+
+	var heroes = HeroAssignment.get_heroes(_dungeon);
+	var guild_share = ceili(total_gold * .1);
+	var hero_share = total_gold - guild_share;
+	@warning_ignore("integer_division")
+	var per_hero_share = hero_share / heroes.size();
+	for hero in heroes:
+		hero.gold += per_hero_share;
+	var leftover = per_hero_share * heroes.size();
+	Resources.gold += guild_share + leftover;
 
 func _load_next_room() -> void:
 	_dungeon.on_complete(_room);
