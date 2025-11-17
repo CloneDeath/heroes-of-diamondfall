@@ -46,15 +46,9 @@ func execute() -> void:
 		if (_units._all_monsters_are_dead()):
 			_load_next_room();
 
-	var heroes = HeroAssignment.get_heroes(_dungeon);
-	var guild_share = ceili(total_gold * .1);
-	var hero_share = total_gold - guild_share;
-	@warning_ignore("integer_division")
-	var per_hero_share = hero_share / heroes.size();
-	for hero in heroes:
-		hero.gold += per_hero_share;
-	var leftover = per_hero_share * heroes.size();
-	Resources.gold += guild_share + leftover;
+	$ProgressBar.visible = false;
+	$Results.visible = true;
+	await $Results.show_results(_dungeon, total_gold);
 
 func _load_next_room() -> void:
 	_dungeon.on_complete(_room);

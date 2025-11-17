@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://byyuvv3isfhsf"]
+
+[ext_resource type="Script" uid="uid://bnv4nrr08tmg2" path="res://Adventure/Events/DungeonEvent/results.gd" id="1_j1buy"]
+
+[node name="Results" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j1buy")
+
+[node name="Itemization" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
