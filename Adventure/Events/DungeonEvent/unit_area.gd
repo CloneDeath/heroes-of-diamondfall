@@ -33,11 +33,12 @@ func _get_combat_cards() -> Array[UnitCombatCard]:
 func _add_unit(unit: CombatUnit) -> void:
 	var card: UnitCombatCard = unit_combat_card.instantiate();
 	card.unit = unit;
+	var x = floori(_unit_count / 3.0);
 	if (layout == HorizontalAlignment.HORIZONTAL_ALIGNMENT_LEFT):
-		card.position.x = _unit_width * floori(_unit_count / 3.0);
+		card.position.x = _unit_width * x;
 	else:
-		card.position.x = size.x - _unit_width * (floori(_unit_count / 3.0) + 1);
+		card.position.x = size.x - _unit_width * (x + 1);
 		card.anchor_left = 1;
-	card.position.y = _unit_height * (_unit_count % 3);
+	card.position.y = _unit_height * (_unit_count % 3) + ((x % 2) * _unit_height / 2.0);
 	add_child(card);
 	_unit_count += 1;
