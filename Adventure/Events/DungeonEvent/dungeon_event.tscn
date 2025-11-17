@@ -20,13 +20,22 @@ offset_right = 230.0
 offset_bottom = 74.0
 text = "Dungeon Name"
 
-[node name="RoomNumber" type="Label" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 44.0
-offset_top = 78.0
-offset_right = 230.0
-offset_bottom = 101.0
-text = "Floor 1"
+offset_top = 76.0
+offset_right = 316.0
+offset_bottom = 116.0
+
+[node name="Progress" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Progress"
+
+[node name="DungeonProgress" type="ProgressBar" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(400, 0)

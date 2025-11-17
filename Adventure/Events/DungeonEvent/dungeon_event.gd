@@ -18,6 +18,8 @@ func init(dungeon: Dungeon) -> void:
 	_load_room_and_units();
 
 func _process(delta: float) -> void:
+	if (_dungeon):
+		%DungeonProgress.value = _dungeon.progress() * 100;
 	if (!process): return;
 
 	progress += delta / time_per_step;
