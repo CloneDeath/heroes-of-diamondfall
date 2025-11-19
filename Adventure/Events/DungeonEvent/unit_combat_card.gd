@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 func _setup() -> void:
 	if (!unit): return;
 	unit.attacks.connect(func(_target): attack());
+	unit.attacked.connect(take_damage);
 	%Name.text = unit.unit_name;
 	%HealthBar.max_value = unit.max_hp;
 	%HealthBar.value = unit.hp;
@@ -41,3 +42,16 @@ func attack() -> void:
 	t.tween_property(self, "position", position + direction, 0.08);
 	t.tween_property(self, "position", position, 0.16);
 	await t.finished;
+
+func take_damage(amount: int) -> void:
+	var label = Label.new();
+	label.text = "-" + str(amount);
+	label.label_settings = LabelSettings.new();
+	label.label_settings.font_size = 24;
+	label.label_settings.font_color = Color.DARK_RED;
+	add_child(label);
+
+	var center = size / 2 - label.size / 2 + Vector2.DOWN * 15;
+	var tween = create_tween();
+	tween.tween_property(label, "position", center + Vector2.UP * 30, 0.5).from(center);
+	tween.tween_callback(func(): label.queue_free());
