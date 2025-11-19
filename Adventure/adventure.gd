@@ -1,9 +1,11 @@
 extends Control
 
 var rest_event = preload("res://Adventure/Events/RestEvent/rest_event.tscn");
+var purchase_event = preload("res://Adventure/Events/PurchaseEvent/purchase_event.tscn");
 var dungeon_event = preload("res://Adventure/Events/DungeonEvent/dungeon_event.tscn");
 
 func _ready() -> void:
+	_enqueue_purchase();
 	_enqueue_dungeons();
 	_enqueue_rest();
 	while ($Queue.has_events()):
@@ -13,6 +15,11 @@ func _ready() -> void:
 
 func _go_back_to_main() -> void:
 	get_tree().change_scene_to_file("res://Planning/main.tscn");
+
+func _enqueue_purchase() -> void:
+	var event = purchase_event.instantiate();
+	event.visible = false;
+	$Queue.add_child(event);
 
 func _enqueue_rest() -> void:
 	var unassigned_heroes = Heroes.heroes.filter(func (hero: Hero):

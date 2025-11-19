@@ -22,6 +22,8 @@ func progress() -> float:
 	return 1 - ((wolves.current + bears.current) / 150.0);
 
 func get_room() -> Room:
+	if (progress() < 0.01 && wolves.current >= 1):
+		return Room.new([Wolf.new()]);
 	var monsters: Array[Unit] = [];
 	var bear_encounter = randi_range(0, 100) > 50;
 	if (progress() > 0.1 && bear_encounter && bears.current >= 1):

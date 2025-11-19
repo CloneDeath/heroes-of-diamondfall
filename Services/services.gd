@@ -1,6 +1,8 @@
 extends Node
 
+var blacksmith = Blacksmith.new();
+
 var services: Array[Service] = [
-	Blacksmith.new(),
+	blacksmith,
 	Doctor.new()
 ];
