@@ -13,13 +13,13 @@ func _wait_one() -> void:
 	await get_tree().create_timer(0.5).timeout;
 
 func _buy_items(hero: Hero) -> Blacksmith.ItemSale:
-	if (hero.inventory.weapon):
+	if (!Services.blacksmith.unlocked):
 		return null;
 	var purchase: Blacksmith.ItemSale = null;
 	var best = hero.inventory.weapon;
 	for sale in Services.blacksmith.get_items_for_sale():
 		if (sale.cost > hero.gold): continue;
-		if (sale.item.damage > best.damage):
+		if (best == null || sale.item.damage > best.damage):
 			best = sale.item;
 			purchase = sale;
 	if (purchase):

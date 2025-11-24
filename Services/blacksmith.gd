@@ -22,3 +22,4 @@ func _init() -> void:
 	cost = 10;
 	description = "The Blacksmith creates weapons and armors for your heroes";
 	texture = preload("res://Services/blacksmith.png");
+	sword.unlocked = true;
