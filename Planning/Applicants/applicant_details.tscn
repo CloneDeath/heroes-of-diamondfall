@@ -40,6 +40,10 @@ text = "10 Gold"
 layout_mode = 2
 text = "Recruit"
 
+[node name="Reject" type="Button" parent="."]
+layout_mode = 2
+text = "Reject"
+
 [node name="Preview" type="Sprite2D" parent="."]
 texture_filter = 3
 position = Vector2(364.00003, 86)
@@ -47,3 +51,4 @@ scale = Vector2(10, 10)
 texture = ExtResource("2_ejyu7")
 
 [connection signal="pressed" from="Recruit" to="." method="_on_recruit_pressed"]
+[connection signal="pressed" from="Reject" to="." method="_on_reject_pressed"]

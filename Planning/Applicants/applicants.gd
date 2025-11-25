@@ -10,10 +10,11 @@ func _on_details_applicant_recruited(applicant: Applicant) -> void:
 	Resources.gold -= applicant.cost;
 	applicant.hero.gold += applicant.cost;
 	Heroes.heroes.push_back(applicant.hero);
-	var index = Heroes.applicants.find_custom(func (other: Applicant):
-		return other.hero == applicant.hero;
-	);
-	if (index < 0): return;
-	Heroes.applicants.remove_at(index);
+	Heroes.applicants.erase(applicant);
 	$Details.applicant = null;
 	$ApplicantList.deselect_all();
+
+func _on_details_applicant_rejected(applicant: Applicant) -> void:
+	$Details.applicant = null;
+	$ApplicantList.deselect_all();
+	Heroes.reject(applicant);

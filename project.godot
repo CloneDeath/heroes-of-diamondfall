@@ -24,6 +24,10 @@ Dungeons="*res://Dungeons/dungeons.gd"
 HeroAssignment="*res://Heroes/hero_assignment.gd"
 Services="*res://Services/services.gd"
 
+[display]
+
+window/stretch/aspect="ignore"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

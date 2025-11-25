@@ -11,6 +11,7 @@ func _ready() -> void:
 	while ($Queue.has_events()):
 		await $Queue.execute();
 	HeroAssignment.clear();
+	Heroes.refresh_applicants()
 	_go_back_to_main();
 
 func _go_back_to_main() -> void:

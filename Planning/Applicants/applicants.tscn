@@ -22,3 +22,4 @@ size_flags_horizontal = 3
 
 [connection signal="item_selected" from="ApplicantList" to="." method="_on_applicant_list_item_selected"]
 [connection signal="applicant_recruited" from="Details" to="." method="_on_details_applicant_recruited"]
+[connection signal="applicant_rejected" from="Details" to="." method="_on_details_applicant_rejected"]

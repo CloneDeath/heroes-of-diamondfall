@@ -2,6 +2,7 @@ extends VBoxContainer
 
 @export var applicant: Applicant;
 signal applicant_recruited(applicant: Applicant);
+signal applicant_rejected(applicant: Applicant);
 
 func _process(_delta: float) -> void:
 	if (!applicant):
@@ -25,3 +26,6 @@ func _get_gender_text():
 
 func _on_recruit_pressed() -> void:
 	applicant_recruited.emit(applicant);
+
+func _on_reject_pressed() -> void:
+	applicant_rejected.emit(applicant);
