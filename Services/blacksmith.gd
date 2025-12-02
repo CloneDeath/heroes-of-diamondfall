@@ -1,20 +1,16 @@
 extends Service
 class_name Blacksmith
 
-class ItemSale:
-	var item: Item;
-	var cost: int;
-	func _init(new_item: Item, new_cost: int) -> void:
-		item = new_item;
-		cost = new_cost;
-
 var sword = Feature.new("Sword", 10);
+var leather_body = Feature.new("Leather Body", 15);
+
 func _get_features() -> Array[Feature]:
-	return [sword];
+	return [sword, leather_body];
 
 func get_items_for_sale() -> Array[ItemSale]:
 	var items: Array[ItemSale] = [];
 	if (sword.unlocked): items.push_back(ItemSale.new(Sword.new(), 10))
+	if (leather_body.unlocked): items.push_back(ItemSale.new(LeatherArmor.new(), 15))
 	return items;
 
 func _init() -> void:

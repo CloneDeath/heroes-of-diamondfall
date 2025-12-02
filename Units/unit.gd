@@ -30,9 +30,14 @@ func heal(amount: int) -> void:
 		dead = false;
 
 func take_damage(amount: int) -> void:
+	var damage = amount;
+	if (inventory.body):
+		damage -= inventory.body.defense;
+	if (damage <= 0):
+		damage = 1;
 	if (hp > 0):
-		hp = int(move_toward(hp, 0, amount));
-		attacked.emit(amount);
+		hp = int(move_toward(hp, 0, damage));
+		attacked.emit(damage);
 	if (hp <= 0 && !dead):
 		dead = true;
 		death.emit(self);

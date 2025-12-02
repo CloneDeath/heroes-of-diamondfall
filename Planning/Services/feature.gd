@@ -11,3 +11,4 @@ func _process(_delta: float) -> void:
 
 func _on_unlock_pressed() -> void:
 	feature.unlocked = true;
+	Resources.gold -= feature.cost;
